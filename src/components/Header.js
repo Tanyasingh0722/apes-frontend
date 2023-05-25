@@ -28,6 +28,8 @@ import { FaCoins } from "react-icons/fa";
 import { getUserByIdAPI } from "../pages/Service";
 import { useEffect } from "react";
 import logo from "../assets/img/logo.png";
+import profile from "../assets/img/profile.png";
+
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
@@ -113,6 +115,7 @@ export default function Header() {
               <Text fontSize={"md"} m={2} fontWeight={600}>
                 {JSON.parse(localStorage.getItem("userData"))?.user?.balance}
               </Text>
+
               <Avatar onClick={() => navigate("/myprofile")}></Avatar>
             </Flex>
           )}

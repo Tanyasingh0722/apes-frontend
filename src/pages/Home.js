@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import "./Home.css";
+import { useEffect, useRef } from "react";
 // Here we have used react-icons package for the icons
 import { HiOutlineMail } from "react-icons/hi";
 import { BsArrowUpShort, BsArrowDownShort } from "react-icons/bs";
@@ -31,6 +32,10 @@ import { useNavigate } from "react-router-dom";
 import trendingimg from "../assets/img/Saly-10.png";
 import agendaimg from "../assets/img/Saly-12.png";
 import { FaLaptopCode } from "react-icons/fa";
+import Footer from "./Pages";
+import img1 from "../assets/img/treasure-chest-7111541-5769376_0-transformed-removebg-preview.png";
+import img2 from "../assets/img/business-agenda-7901499-6478391-transformed-removebg-preview.png";
+import img3 from "../assets/img/coin-in-hand.png";
 
 interface StatData {
   id: number;
@@ -79,19 +84,25 @@ const Home = () => {
     <Box w="100%" mt="-10px">
       <div className="bg">
         <Stack
+          pos="relative"
           h={{ base: "auto", md: "auto" }}
           p={{ base: 5, md: 10 }}
           direction={{ base: "column", md: "row" }}
           bgImage={{
             base: "none",
-            md: "url(https://i.postimg.cc/JzpryZfz/Group-1.png)",
+            md: "url(https://i.postimg.cc/CK6N36Gr/Saly-13-1.png)",
           }}
-          backgroundSize="540px"
+          backgroundSize="740px"
           m={10}
           backgroundPosition="center right"
           backgroundRepeat="no-repeat"
           minH={{ base: "unset", md: "550px" }}
         >
+          <div className="img">
+            <img src={img1} alt="img1" className="i1" />
+            <img src={img2} alt="img2" className="i2" />
+            <img src={img3} alt="img3" className="i3" />
+          </div>
           <Stack
             pos="relative"
             zIndex={1}
@@ -106,14 +117,15 @@ const Home = () => {
               fontWeight="bold"
               textAlign="left"
             >
-              Explore TemplatesKart <br />
+              Academic Point <span className="exchange">Exchange</span> System{" "}
+              <br />
             </chakra.h1>
             <Text
               fontSize="1.2rem"
               textAlign="left"
               lineHeight="1.375"
               fontWeight="400"
-              color={"gray.500"}
+              color={"black.500"}
             >
               Welcome to APES, a revolutionary rewarding system designed to
               enhance the college experience and foster a thriving micro-economy
@@ -154,16 +166,18 @@ const Home = () => {
                   zIndex: -1,
                 }}
               >
-                Freelance
+                Welcome
               </Text>
               <br />{" "}
               <Text color={"blue.400"} as={"span"}>
-                Design Projects
+                to the Event Section!
               </Text>{" "}
             </Heading>
             <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              The project board is an exclusive resource for contract work. It's
-              perfect for freelancers, agencies, and moonlighters.
+              Step into a world of endless excitement and incredible
+              opportunities with our exclusive Event Section! Brace yourself for
+              a whirlwind of thrilling experiences that will leave you
+              breathless and eager for more.
             </Text>
           </Stack>
         </Flex>
@@ -274,8 +288,8 @@ const Home = () => {
           ))}
         </Flex>
       </Box>
-      <Stack minH={"20vh"} direction={{ base: "column", md: "row" }} mt="-60px">
-        <Flex p={8} flex={1} align={"center"} justify={"center"} mt="-60px">
+      <Stack minH={"20vh"} direction={{ base: "column", md: "row" }}>
+        <Flex p={8} flex={1} align={"center"} justify={"center"}>
           <Stack spacing={6} w={"full"} maxW={"lg"}>
             <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
               <Text
@@ -292,16 +306,20 @@ const Home = () => {
                   zIndex: -1,
                 }}
               >
-                Freelance
+                Welcome
               </Text>
               <br />{" "}
               <Text color={"blue.400"} as={"span"}>
-                Design Projects
+                to the Agenda Page!
               </Text>{" "}
             </Heading>
             <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              The project board is an exclusive resource for contract work. It's
-              perfect for freelancers, agencies, and moonlighters.
+              Share your agenda, gather insights, and make informed decisions
+              through a unique voting system that combines the strength of your
+              project's coin. Join us on this remarkable journey of democratic
+              decision-making, where your opinions shape the destiny of our
+              project. Together, let's create a legacy that will inspire
+              generations to come.
             </Text>
           </Stack>
         </Flex>
@@ -327,9 +345,10 @@ const Home = () => {
               whileHover={{ translateY: -5 }}
             >
               <Stack
+                className="card"
                 direction="column"
                 rounded="md"
-                boxShadow={"0 4px 6px rgba(160, 174, 192, 0.6)"}
+                // shadow part of card
                 w="100%"
                 textAlign="left"
                 align="start"
@@ -337,7 +356,7 @@ const Home = () => {
                 role="group"
                 overflow="hidden"
               >
-                <HStack py={6} px={5} spacing={4} bg={"gray.100"} w="100%">
+                <HStack py={6} px={5} spacing={4} bg={"#6E85B7"} w="100%">
                   <Flex
                     justify="center"
                     alignItems="center"
@@ -392,6 +411,7 @@ const Home = () => {
           ))}
         </Flex>
       </Box>
+      <Footer />
     </Box>
   );
 };
