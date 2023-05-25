@@ -115,10 +115,12 @@ const Home = () => {
               fontWeight="400"
               color={"gray.500"}
             >
-              TemplatesKart is a set of more than 100 responsive components
-              built with chakraUI. All components support dark/light color
-              scheme and chakraUI theme customizations. TemplatesKart is free
-              for everyone.
+              Welcome to APES, a revolutionary rewarding system designed to
+              enhance the college experience and foster a thriving micro-economy
+              within our campus community. Powered by blockchain technology, our
+              platform offers a secure and transparent way to incentivize and
+              reward students for their academic and extracurricular
+              achievements.
             </Text>
 
             {/* Home Page Buttons */}
