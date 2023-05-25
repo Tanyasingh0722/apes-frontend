@@ -27,7 +27,7 @@ import { BsCoin } from "react-icons/bs";
 import { FaCoins } from "react-icons/fa";
 import { getUserByIdAPI } from "../pages/Service";
 import { useEffect } from "react";
-
+import logo from "../assets/img/logo.png";
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ export default function Header() {
           fontFamily={"heading"}
           color={useColorModeValue("gray.800", "white")}
         >
-          Logo
+          <img src={logo} alt="logo" />
         </Text>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
