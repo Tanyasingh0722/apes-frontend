@@ -78,6 +78,22 @@ const Home = () => {
     getEvents();
   }, []);
 
+  document.addEventListener("mousemove", parallax);
+
+  function parallax(e) {
+    const layers = document.querySelectorAll(".layer");
+
+    layers.forEach((Layer) => {
+      // Change variable name to "Layer"
+      const speed = Layer.getAttribute("data-speed");
+
+      const x = (window.innerWidth - e.pageX * speed) / 100;
+      const y = (window.innerHeight - e.pageY * speed) / 100;
+
+      Layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    });
+  }
+
   return (
     // Home page title AND images
 
@@ -99,9 +115,9 @@ const Home = () => {
           minH={{ base: "unset", md: "550px" }}
         >
           <div className="img">
-            <img src={img1} alt="img1" className="i1" />
-            <img src={img2} alt="img2" className="i2" />
-            <img src={img3} alt="img3" className="i3" />
+            <img src={img1} alt="img1" className="i1 layer" data-speed={2} />
+            <img src={img2} alt="img2" className="i2 layer" data-speed={-5} />
+            <img src={img3} alt="img3" className="i3 layer" data-speed={5} />
           </div>
           <Stack
             pos="relative"
