@@ -97,7 +97,6 @@ export default function Events({ isAgenda = false }) {
               a whirlwind of thrilling experiences that will leave you
               breathless and eager for more.
             </p>
-            
           </>
         ) : (
           <>
@@ -122,13 +121,7 @@ export default function Events({ isAgenda = false }) {
       {isAgenda ? (
         // HACKATHON PAGE
         <div className="eventbox">
-          <VStack
-            pb={20}
-            
-            rounded="md"
-            overflow="hidden"
-            spacing={0}
-          >
+          <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
             {events.map((event, index) => (
               <Fragment key={index}>
                 <Grid
@@ -202,13 +195,7 @@ export default function Events({ isAgenda = false }) {
         </div>
       ) : (
         <div className="eventbox">
-          <VStack
-            pb={20}
-            
-            rounded="md"
-            overflow="hidden"
-            spacing={0}
-          >
+          <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
             {events.map((event, index) => (
               <Fragment key={index}>
                 <Grid
