@@ -81,7 +81,7 @@ export default function Events({ isAgenda = false }) {
     );
   };
   return (
-    <Container className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container className="container" maxW="5xl" mb={30}>
       <Flex justify="left" mb={3}>
         <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
           {!isAgenda ? "Event" : "Agendas"}
@@ -135,6 +135,7 @@ export default function Events({ isAgenda = false }) {
         // HACKATHON PAGE
         <div className="eventbox">
           <VStack
+            pb={20}
             border="1px solid"
             borderColor="gray.400"
             rounded="md"
@@ -215,6 +216,7 @@ export default function Events({ isAgenda = false }) {
       ) : (
         <div className="eventbox">
           <VStack
+            pb={20}
             border="1px solid"
             borderColor="red.400"
             rounded="md"
