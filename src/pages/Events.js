@@ -84,6 +84,20 @@ export default function Events({ isAgenda = false }) {
           {!isAgenda ? "Hackathons" : "Agendas"}
         </chakra.h3>
       </Flex>
+      <div>
+      {!isAgenda ? (
+        <>
+          <p className="eventdis">
+            Welcome to the Event Section!
+          </p>
+          <p className="eventdis">Step into a world of endless excitement and incredible opportunities with our exclusive Event Section! Brace yourself for a whirlwind of thrilling experiences that will leave you breathless and eager for more.</p>
+          <p className="eventdis">Participating in these extraordinary events is easier than ever! Simply dive into our captivating event listings, each brimming with thrilling details that will make your heart race. Choose the event that resonates with your passions and aspirations, and with a simple click, you'll unlock a world of adventure.</p>
+          <p className="eventdis">So, are you ready to step into the spotlight, fuel your passions, and embrace a world of thrilling events? Gear up, buckle in, and prepare to make every moment count. The stage is set, and the spotlight is on you. Let the adventure begin!</p>
+        </>
+      ) : <p className="eventdis">
+      Welcome to the Agendas Section!
+    </p>}
+      </div>
 
       {/* AGENDA PAGE  */}
 
