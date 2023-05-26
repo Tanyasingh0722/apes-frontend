@@ -133,8 +133,7 @@ export default function Events({ isAgenda = false }) {
         // HACKATHON PAGE
         <div className="eventbox">
           <VStack
-            border="1px solid"
-            borderColor="gray.400"
+           
             rounded="md"
             overflow="hidden"
             spacing={0}
@@ -149,7 +148,7 @@ export default function Events({ isAgenda = false }) {
                   p={{ base: 2, sm: 4 }}
                   gap={3}
                   alignItems="center"
-                  _hover={{ bg: "gray.600" }}
+                  _hover={{ bg: "gray.200" }}
                 >
                   <Box gridColumnEnd={{ base: "span 2", md: "unset" }}>
                     <chakra.h3
@@ -213,8 +212,8 @@ export default function Events({ isAgenda = false }) {
       ) : (
         <div className="eventbox">
           <VStack
-            border="1px solid"
-            borderColor="red.400"
+            
+            
             rounded="md"
             overflow="hidden"
             spacing={0}
@@ -258,7 +257,7 @@ export default function Events({ isAgenda = false }) {
                     alignItems="center"
                   ></Stack>
                 </Grid>
-                {articles.length - 1 !== index && <Divider m={0} />}
+                {articles.length - 1 !== index}
               </Fragment>
             ))}
           </VStack>
