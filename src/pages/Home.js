@@ -27,7 +27,7 @@ import { BsArrowUpShort, BsArrowDownShort } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
 // Here we have used react-icons package for the icons
 import { FaGithub } from "react-icons/fa";
-import { getallEventsAPI } from "./Service";
+import { fetchAgendaAPI, getallEventsAPI } from "./Service";
 import { useNavigate } from "react-router-dom";
 import trendingimg from "../assets/img/Saly-10.png";
 import agendaimg from "../assets/img/Saly-12.png";
@@ -36,6 +36,7 @@ import Footer from "./Footer";
 import img1 from "../assets/img/treasure-chest-7111541-5769376_0-transformed-removebg-preview.png";
 import img2 from "../assets/img/business-agenda-7901499-6478391-transformed-removebg-preview.png";
 import img3 from "../assets/img/coin-in-hand.png";
+import { getAllAgendaAPI } from "./Service";
 
 interface StatData {
   id: number;
@@ -76,6 +77,15 @@ const Home = () => {
   };
   React.useEffect(() => {
     getEvents();
+  }, []);
+  const [agendas, setAgenda] = React.useState([]);
+  const getAgenda = async () => {
+    const data = await getAllAgendaAPI();
+
+    setAgenda(data);
+  };
+  React.useEffect(() => {
+    getAgenda();
   }, []);
 
   document.addEventListener("mousemove", parallax);
@@ -348,11 +358,15 @@ const Home = () => {
           <Text color="black" fontSize="2xl" fontWeight="bold">
             Currently Running Agendas
           </Text>
-          <Button>
+          <Button
+            onClick={() => {
+              navigate("/agenda");
+            }}
+          >
             View All <BsArrowUpShort />
           </Button>
         </Flex>
-        <Flex w="100%" justifyContent={"space-between"}>
+        {/* <Flex w="100%" justifyContent={"space-between"}>
           {statData.map((data, index) => (
             <motion.div
               style={{
@@ -421,6 +435,91 @@ const Home = () => {
                 </HStack>
                 <Flex py={3} px={5} d="none" _groupHover={{ d: "flex" }}>
                   <Link fontSize="md">View All</Link>
+                </Flex>
+              </Stack>
+            </motion.div>
+          ))}
+        </Flex> */}
+        <Flex w="100%" justifyContent={"space-between"}>
+          {agendas?.slice(0, 3)?.map((data, index) => (
+            <motion.div
+              style={{
+                width: "30%",
+              }}
+              whileHover={{ translateY: -5 }}
+            >
+              <Stack
+                className="card"
+                direction="column"
+                rounded="md"
+                // shadow part of card
+                w="100%"
+                textAlign="left"
+                align="start"
+                spacing={0}
+                role="group"
+                overflow="hidden"
+              >
+                <HStack py={6} px={5} spacing={4} bg={"#6E85B7"} w="100%">
+                  <Flex
+                    justify="center"
+                    alignItems="center"
+                    rounded="lg"
+                    p={2}
+                    position="relative"
+                    w={12}
+                    h={12}
+                    overflow="hidden"
+                    lineHeight={0}
+                    boxShadow="inset 0 0 1px 1px rgba(0, 0, 0, 0.015)"
+                  >
+                    <Icon as={FaLaptopCode} w={10} h={10} color="white" />
+                  </Flex>
+                  <VStack
+                    onClick={() => navigate("/agenda/" + data._id)}
+                    spacing={0}
+                    align="start"
+                    maxW="lg"
+                    h="100%"
+                  >
+                    <Text as="h3" fontSize="md" noOfLines={2} color="gray.400">
+                      {data.agenda}
+                    </Text>
+                    <HStack spacing={2}>
+                      <Text as="h2" fontSize="lg" fontWeight="extrabold">
+                        {data.voters.length}
+                      </Text>
+                      <Flex>
+                        {Number(data.voters.length) > 2 ? (
+                          <Icon
+                            as={BsArrowUpShort}
+                            w={6}
+                            h={6}
+                            color="green.400"
+                          />
+                        ) : (
+                          <Icon
+                            as={BsArrowUpShort}
+                            w={6}
+                            h={6}
+                            color="green.400"
+                          />
+                        )}
+                        <Text as="h2" fontSize="md">
+                          {data.voters.length}
+                        </Text>
+                      </Flex>
+                    </HStack>
+                  </VStack>
+                </HStack>
+
+                <Flex py={3} px={5} d="none" _groupHover={{ d: "flex" }}>
+                  <Link
+                    onClick={() => navigate("/participents/" + data._id)}
+                    fontSize="md"
+                  >
+                    Voters
+                  </Link>
                 </Flex>
               </Stack>
             </motion.div>

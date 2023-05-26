@@ -61,7 +61,7 @@ export default function Events({ isAgenda = false }) {
   };
   useEffect(() => {
     getEvents();
-  }, []);
+  }, [isAgenda]);
   const ArticleStat = ({ icon, value }: { icon: IconType, value: number }) => {
     return (
       <Flex p={1} alignItems="center">
@@ -79,7 +79,7 @@ export default function Events({ isAgenda = false }) {
     );
   };
   return (
-    <Container className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container className="container" maxW="5xl" pb={40}>
       <Flex justify="left" mb={3}>
         <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
           {!isAgenda ? "Event" : "Agendas"}
@@ -137,6 +137,7 @@ export default function Events({ isAgenda = false }) {
             borderColor="gray.400"
             rounded="md"
             overflow="hidden"
+            mb={40}
             spacing={0}
           >
             {events.map((event, index) => (

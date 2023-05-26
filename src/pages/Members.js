@@ -19,6 +19,7 @@ export default function Members() {
   const getallmembers = async () => {
     const data = await getParticipentsAPI({
       eventID: id,
+      isAgenda: false,
     });
     setMember(data);
   };
