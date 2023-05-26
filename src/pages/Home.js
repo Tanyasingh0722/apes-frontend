@@ -32,7 +32,7 @@ import { useNavigate } from "react-router-dom";
 import trendingimg from "../assets/img/Saly-10.png";
 import agendaimg from "../assets/img/Saly-12.png";
 import { FaLaptopCode } from "react-icons/fa";
-import Footer from "./Pages";
+import Footer from "./Footer";
 import img1 from "../assets/img/treasure-chest-7111541-5769376_0-transformed-removebg-preview.png";
 import img2 from "../assets/img/business-agenda-7901499-6478391-transformed-removebg-preview.png";
 import img3 from "../assets/img/coin-in-hand.png";
