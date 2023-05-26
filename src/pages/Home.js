@@ -24,7 +24,7 @@ import { useEffect, useRef } from "react";
 // Here we have used react-icons package for the icons
 import { HiOutlineMail } from "react-icons/hi";
 import { BsArrowUpShort, BsArrowDownShort } from "react-icons/bs";
-import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineLike } from "react-icons/ai";
 // Here we have used react-icons package for the icons
 import { FaGithub } from "react-icons/fa";
 import { getallEventsAPI } from "./Service";
@@ -219,7 +219,7 @@ const Home = () => {
         {/* home page boxes */}
 
         <Flex w="100%" justifyContent={"space-between"}>
-          {events.map((data, index) => (
+          {events?.slice(3)?.map((data, index) => (
             <motion.div
               style={{
                 width: "30%",
