@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./Event.css";
 import { Fragment } from "react";
+// import book from "../assets/img/casual-life-3d-close-up-of-blue-book.png";
+
 import {
   Container,
   Box,
@@ -79,7 +81,7 @@ export default function Events({ isAgenda = false }) {
     );
   };
   return (
-    <Container className="container" maxW="5xl" pb={40}>
+    <Container className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
       <Flex justify="left" mb={3}>
         <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
           {!isAgenda ? "Event" : "Agendas"}
@@ -137,7 +139,6 @@ export default function Events({ isAgenda = false }) {
             borderColor="gray.400"
             rounded="md"
             overflow="hidden"
-            mb={40}
             spacing={0}
           >
             {events.map((event, index) => (
