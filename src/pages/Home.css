@@ -8,7 +8,7 @@
     radial-gradient(at 99% 97%, hsla(342, 0%, 100%, 1) 0px, transparent 50%);
   height: 700px;
   position: relative;
-  z-index: 999;
+  z-index: 0;
 }
 .card {
   border-radius: 50px;
@@ -44,7 +44,7 @@
   position: absolute;
   width: 200px;
   height: 170px;
-  z-index: 1;
+  z-index: -1;
   bottom: -315px;
   right: 120px;
   rotate: -20deg;

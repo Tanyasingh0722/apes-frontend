@@ -7,7 +7,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
 
 import logo from "../assets/img/logo.png";
@@ -66,7 +66,8 @@ const SocialButton = ({
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
+      backgroundColor="#6E85B7"
+      // bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
     >
       <Container
@@ -81,14 +82,8 @@ export default function Footer() {
         <img src={logo} alt="logo" />
         <Text>© 2023 Academic Point Exchange System</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
+          <SocialButton label={"Github"} href={"#"}>
+            <FaGithub />
           </SocialButton>
         </Stack>
       </Container>

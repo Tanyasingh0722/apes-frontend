@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Event.css"
+import "./Event.css";
 import { Fragment } from "react";
 import {
   Container,
@@ -79,28 +79,52 @@ export default function Events({ isAgenda = false }) {
     );
   };
   return (
-    <Container  className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
       <Flex justify="left" mb={3}>
         <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
           {!isAgenda ? "Event" : "Agendas"}
         </chakra.h3>
       </Flex>
       <div>
-      {!isAgenda ? (
-        <>
-          <p className="eventdis">
-            Welcome to the Event Section!
-          </p>
-          <p className="eventdis">Step into a world of endless excitement and incredible opportunities with our exclusive Event Section! Brace yourself for a whirlwind of thrilling experiences that will leave you breathless and eager for more.</p>
-          <p className="eventdis">Participating in these extraordinary events is easier than ever! Simply dive into our captivating event listings, each brimming with thrilling details that will make your heart race. Choose the event that resonates with your passions and aspirations, and with a simple click, you'll unlock a world of adventure.</p>
-          <p className="eventdis">So, are you ready to step into the spotlight, fuel your passions, and embrace a world of thrilling events? Gear up, buckle in, and prepare to make every moment count. The stage is set, and the spotlight is on you. Let the adventure begin!</p>
-        </>
-      ) : (
-      <>
-      <p className="eventdis">Welcome to the Agendas Section!</p>
-      <p className="eventdis">Here, we believe in the power of collective decision-making and giving every member a voice. Share your agenda, gather insights, and make informed decisions through a unique voting system that combines the strength of your project's coin.</p>
-      <p className="eventdis">Join us on this remarkable journey of democratic decision-making, where your opinions shape the destiny of our project. Together, let's create a legacy that will inspire generations to come.</p>
-    </>)}
+        {!isAgenda ? (
+          <>
+            <p className="eventdis">Welcome to the Event Section!</p>
+            <p className="eventdis">
+              Step into a world of endless excitement and incredible
+              opportunities with our exclusive Event Section! Brace yourself for
+              a whirlwind of thrilling experiences that will leave you
+              breathless and eager for more.
+            </p>
+            <p className="eventdis">
+              Participating in these extraordinary events is easier than ever!
+              Simply dive into our captivating event listings, each brimming
+              with thrilling details that will make your heart race. Choose the
+              event that resonates with your passions and aspirations, and with
+              a simple click, you'll unlock a world of adventure.
+            </p>
+            <p className="eventdis">
+              So, are you ready to step into the spotlight, fuel your passions,
+              and embrace a world of thrilling events? Gear up, buckle in, and
+              prepare to make every moment count. The stage is set, and the
+              spotlight is on you. Let the adventure begin!
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="eventdis">Welcome to the Agendas Section!</p>
+            <p className="eventdis">
+              Here, we believe in the power of collective decision-making and
+              giving every member a voice. Share your agenda, gather insights,
+              and make informed decisions through a unique voting system that
+              combines the strength of your project's coin.
+            </p>
+            <p className="eventdis">
+              Join us on this remarkable journey of democratic decision-making,
+              where your opinions shape the destiny of our project. Together,
+              let's create a legacy that will inspire generations to come.
+            </p>
+          </>
+        )}
       </div>
 
       {/* AGENDA PAGE  */}
@@ -108,136 +132,136 @@ export default function Events({ isAgenda = false }) {
       {isAgenda ? (
         // HACKATHON PAGE
         <div className="eventbox">
-        <VStack
-          border="1px solid"
-          borderColor="gray.400"
-          rounded="md"
-          overflow="hidden"
-          spacing={0}
-        >
-          {events.map((event, index) => (
-            <Fragment key={index}>
-              <Grid
-                onClick={() => navigate("/agenda/" + event._id)}
-                templateRows={{ base: "auto auto", md: "auto" }}
-                w="100%"
-                templateColumns={{ base: "unset", md: "4fr 2fr 2fr" }}
-                p={{ base: 2, sm: 4 }}
-                gap={3}
-                alignItems="center"
-                _hover={{ bg: "gray.600" }}
-              >
-                <Box gridColumnEnd={{ base: "span 2", md: "unset" }}>
-                  <chakra.h3
-                    as={Link}
-                    // href={article.link}
-                    isExternal
-                    fontWeight="bold"
-                    fontSize="lg"
-                  >
-                    {event.agenda}
-                  </chakra.h3>
-                  <chakra.p
-                    fontWeight="medium"
-                    fontSize="sm"
-                    color={"gray.600"}
-                  >
-                    College ID: {event.collegeID}
-                  </chakra.p>
-                  <chakra.p
-                    fontWeight="medium"
-                    fontSize="sm"
-                    color={"gray.600"}
-                  >
-                    Created On: {event.createdAt}
-                  </chakra.p>
-                  <chakra.p
-                    fontWeight="medium"
-                    fontSize="sm"
-                    color={"gray.600"}
-                  >
-                    Branch Specific:{" "}
-                    {event.isRestrictedToBranch
-                      ? ArticleSettingLink({ label: "Yes" })
-                      : ArticleSettingLink({ label: "No" })}
-                  </chakra.p>
-                  <chakra.p
-                    fontWeight="medium"
-                    fontSize="sm"
-                    color={"gray.600"}
-                  >
-                    Class Specific:{" "}
-                    {event.isRestrictedToClass
-                      ? ArticleSettingLink({ label: "Yes" })
-                      : ArticleSettingLink({ label: "No" })}
-                  </chakra.p>
-                </Box>
-
-                <Stack
-                  spacing={2}
-                  direction="row"
-                  fontSize={{ base: "sm", sm: "md" }}
-                  justifySelf="flex-end"
+          <VStack
+            border="1px solid"
+            borderColor="gray.400"
+            rounded="md"
+            overflow="hidden"
+            spacing={0}
+          >
+            {events.map((event, index) => (
+              <Fragment key={index}>
+                <Grid
+                  onClick={() => navigate("/agenda/" + event._id)}
+                  templateRows={{ base: "auto auto", md: "auto" }}
+                  w="100%"
+                  templateColumns={{ base: "unset", md: "4fr 2fr 2fr" }}
+                  p={{ base: 2, sm: 4 }}
+                  gap={3}
                   alignItems="center"
-                ></Stack>
-              </Grid>
-              {articles.length - 1 !== index && <Divider m={0} />}
-            </Fragment>
-          ))}
-        </VStack>
+                  _hover={{ bg: "gray.600" }}
+                >
+                  <Box gridColumnEnd={{ base: "span 2", md: "unset" }}>
+                    <chakra.h3
+                      as={Link}
+                      // href={article.link}
+                      isExternal
+                      fontWeight="bold"
+                      fontSize="lg"
+                    >
+                      {event.agenda}
+                    </chakra.h3>
+                    <chakra.p
+                      fontWeight="medium"
+                      fontSize="sm"
+                      color={"gray.600"}
+                    >
+                      College ID: {event.collegeID}
+                    </chakra.p>
+                    <chakra.p
+                      fontWeight="medium"
+                      fontSize="sm"
+                      color={"gray.600"}
+                    >
+                      Created On: {event.createdAt}
+                    </chakra.p>
+                    <chakra.p
+                      fontWeight="medium"
+                      fontSize="sm"
+                      color={"gray.600"}
+                    >
+                      Branch Specific:{" "}
+                      {event.isRestrictedToBranch
+                        ? ArticleSettingLink({ label: "Yes" })
+                        : ArticleSettingLink({ label: "No" })}
+                    </chakra.p>
+                    <chakra.p
+                      fontWeight="medium"
+                      fontSize="sm"
+                      color={"gray.600"}
+                    >
+                      Class Specific:{" "}
+                      {event.isRestrictedToClass
+                        ? ArticleSettingLink({ label: "Yes" })
+                        : ArticleSettingLink({ label: "No" })}
+                    </chakra.p>
+                  </Box>
+
+                  <Stack
+                    spacing={2}
+                    direction="row"
+                    fontSize={{ base: "sm", sm: "md" }}
+                    justifySelf="flex-end"
+                    alignItems="center"
+                  ></Stack>
+                </Grid>
+                {articles.length - 1 !== index && <Divider m={0} />}
+              </Fragment>
+            ))}
+          </VStack>
         </div>
       ) : (
         <div className="eventbox">
-        <VStack
-          border="1px solid"
-          borderColor="red.400"
-          rounded="md"
-          overflow="hidden"
-          spacing={0}
-        >
-          {events.map((event, index) => (
-            <Fragment key={index}>
-              <Grid
-                onClick={() => navigate("/event/" + event._id)}
-                templateRows={{ base: "auto auto", md: "auto" }}
-                w="100%"
-                templateColumns={{ base: "unset", md: "4fr 2fr 2fr" }}
-                p={{ base: 2, sm: 4 }}
-                gap={3}
-                alignItems="center"
-                _hover={{ bg: "gray.300" }}
-              >
-                <Box gridColumnEnd={{ base: "span 2", md: "unset" }}>
-                  <chakra.h3
-                    as={Link}
-                    // href={article.link}
-                    isExternal
-                    fontWeight="bold"
-                    fontSize="lg"
-                  >
-                    {event.Hackathonname}
-                  </chakra.h3>
-                  <chakra.p
-                    fontWeight="medium"
-                    fontSize="sm"
-                    color={"gray.600"}
-                  >
-                    Created On: {event.createdAt}
-                  </chakra.p>
-                </Box>
-
-                <Stack
-                  spacing={2}
-                  direction="row"
-                  fontSize={{ base: "sm", sm: "md" }}
-                  justifySelf="flex-end"
+          <VStack
+            border="1px solid"
+            borderColor="red.400"
+            rounded="md"
+            overflow="hidden"
+            spacing={0}
+          >
+            {events.map((event, index) => (
+              <Fragment key={index}>
+                <Grid
+                  onClick={() => navigate("/event/" + event._id)}
+                  templateRows={{ base: "auto auto", md: "auto" }}
+                  w="100%"
+                  templateColumns={{ base: "unset", md: "4fr 2fr 2fr" }}
+                  p={{ base: 2, sm: 4 }}
+                  gap={3}
                   alignItems="center"
-                ></Stack>
-              </Grid>
-              {articles.length - 1 !== index && <Divider m={0} />}
-            </Fragment>
-          ))}
-        </VStack>
+                  _hover={{ bg: "gray.300" }}
+                >
+                  <Box gridColumnEnd={{ base: "span 2", md: "unset" }}>
+                    <chakra.h3
+                      as={Link}
+                      // href={article.link}
+                      isExternal
+                      fontWeight="bold"
+                      fontSize="lg"
+                    >
+                      {event.Hackathonname}
+                    </chakra.h3>
+                    <chakra.p
+                      fontWeight="medium"
+                      fontSize="sm"
+                      color={"gray.600"}
+                    >
+                      Created On: {event.createdAt}
+                    </chakra.p>
+                  </Box>
+
+                  <Stack
+                    spacing={2}
+                    direction="row"
+                    fontSize={{ base: "sm", sm: "md" }}
+                    justifySelf="flex-end"
+                    alignItems="center"
+                  ></Stack>
+                </Grid>
+                {articles.length - 1 !== index && <Divider m={0} />}
+              </Fragment>
+            ))}
+          </VStack>
         </div>
       )}
     </Container>
