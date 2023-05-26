@@ -1,0 +1,36 @@
+.eventbox{
+    position: relative;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-left: 100px;
+    max-width: 800px;
+    max-height: 400px;
+
+    scroll-behavior: smooth;
+    border-radius: 10px;
+    background: linear-gradient(0deg, #FD6E7B, #FEAE88);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    top:100px;  
+    
+}
+
+.eventbox::-webkit-scrollbar{
+    display: none;
+  }
+
+.section {
+    height: 20px;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.eventdis {
+    font-size: large;
+    color: #718096;
+}
+.title {
+    font-size: 3rem;
+}

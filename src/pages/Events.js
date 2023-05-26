@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./Event.css"
 import { Fragment } from "react";
 import {
   Container,
@@ -78,10 +79,10 @@ export default function Events({ isAgenda = false }) {
     );
   };
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 10 }}>
+    <Container  className="container" maxW="5xl" p={{ base: 5, md: 10 }}>
       <Flex justify="left" mb={3}>
         <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
-          {!isAgenda ? "Hackathons" : "Agendas"}
+          {!isAgenda ? "Event" : "Agendas"}
         </chakra.h3>
       </Flex>
       <div>
@@ -94,16 +95,19 @@ export default function Events({ isAgenda = false }) {
           <p className="eventdis">Participating in these extraordinary events is easier than ever! Simply dive into our captivating event listings, each brimming with thrilling details that will make your heart race. Choose the event that resonates with your passions and aspirations, and with a simple click, you'll unlock a world of adventure.</p>
           <p className="eventdis">So, are you ready to step into the spotlight, fuel your passions, and embrace a world of thrilling events? Gear up, buckle in, and prepare to make every moment count. The stage is set, and the spotlight is on you. Let the adventure begin!</p>
         </>
-      ) : <p className="eventdis">
-      Welcome to the Agendas Section!
-    </p>}
+      ) : (
+      <>
+      <p className="eventdis">Welcome to the Agendas Section!</p>
+      <p className="eventdis">Here, we believe in the power of collective decision-making and giving every member a voice. Share your agenda, gather insights, and make informed decisions through a unique voting system that combines the strength of your project's coin.</p>
+      <p className="eventdis">Join us on this remarkable journey of democratic decision-making, where your opinions shape the destiny of our project. Together, let's create a legacy that will inspire generations to come.</p>
+    </>)}
       </div>
 
       {/* AGENDA PAGE  */}
 
       {isAgenda ? (
         // HACKATHON PAGE
-
+        <div className="eventbox">
         <VStack
           border="1px solid"
           borderColor="gray.400"
@@ -181,7 +185,9 @@ export default function Events({ isAgenda = false }) {
             </Fragment>
           ))}
         </VStack>
+        </div>
       ) : (
+        <div className="eventbox">
         <VStack
           border="1px solid"
           borderColor="red.400"
@@ -232,6 +238,7 @@ export default function Events({ isAgenda = false }) {
             </Fragment>
           ))}
         </VStack>
+        </div>
       )}
     </Container>
   );
