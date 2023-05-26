@@ -10,22 +10,32 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React from "react";
-import { getParticipentsAPI } from "./Service";
-import { useParams } from "react-router-dom";
+import { getParticipentsAPI, getVotersAPI } from "./Service";
+import { useLocation, useParams } from "react-router-dom";
 
 export default function Members() {
-  const { id } = useParams();
+  const { type, id } = useParams();
   const [member, setMember] = React.useState([]);
   const getallmembers = async () => {
     const data = await getParticipentsAPI({
       eventID: id,
-      isAgenda: false,
     });
     setMember(data);
   };
+  const getallvoters = async () => {
+    const data = await getVotersAPI({
+      agendaID: id,
+    });
+    setMember(data?.eventDetail?.voters);
+  };
+
   React.useEffect(() => {
-    getallmembers();
-  }, []);
+    if (type === "event") {
+      getallmembers();
+    } else {
+      getallvoters();
+    }
+  }, [type]);
 
   return (
     <TableContainer p={10}>
@@ -41,13 +51,21 @@ export default function Members() {
           </Tr>
         </Thead>
         <Tbody>
-          {member?.users?.map((item) => (
-            <Tr>
-              <Td>{item.name}</Td>
-              <Td>{item.rollno} </Td>
-              <Td>{item.email}</Td>
-            </Tr>
-          ))}
+          {type == "event"
+            ? member?.users?.map((item) => (
+                <Tr>
+                  <Td>{item.name}</Td>
+                  <Td>{item.rollno} </Td>
+                  <Td>{item.email}</Td>
+                </Tr>
+              ))
+            : member?.map((item) => (
+                <Tr>
+                  <Td>{item.name}</Td>
+                  <Td>{item.rollno} </Td>
+                  <Td>{item.email}</Td>
+                </Tr>
+              ))}
         </Tbody>
       </Table>
     </TableContainer>

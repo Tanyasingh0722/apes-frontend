@@ -25,6 +25,18 @@ export const getParticipentsAPI = async (payload) => {
   }
 };
 
+export const getVotersAPI = async (payload) => {
+  try {
+    const { data } = await axios.post(
+      `${REACT_APP_API_URL}/agenda/getParticipents`,
+      payload
+    );
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const isParticipatedAPI = async (payload) => {
   try {
     const { data } = await axios.post(

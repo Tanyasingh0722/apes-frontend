@@ -303,7 +303,7 @@ const Home = () => {
 
                 <Flex py={3} px={5} d="none" _groupHover={{ d: "flex" }}>
                   <Link
-                    onClick={() => navigate("/participents/" + data._id)}
+                    onClick={() => navigate("/participents/event/" + data._id)}
                     fontSize="md"
                   >
                     Participents
@@ -515,7 +515,7 @@ const Home = () => {
 
                 <Flex py={3} px={5} d="none" _groupHover={{ d: "flex" }}>
                   <Link
-                    onClick={() => navigate("/participents/" + data._id)}
+                    onClick={() => navigate("/participents/agenda/" + data._id)}
                     fontSize="md"
                   >
                     Voters

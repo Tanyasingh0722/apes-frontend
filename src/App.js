@@ -39,7 +39,7 @@ function App() {
           <Route path="/addhackathon" element={<Addhackathon />} />
           <Route path="/contactus" element={<Contact />} />
           <Route path="/changepassword" element={<Changepassword />} />
-          <Route path="/participents/:id" element={<Members />} />
+          <Route path="/participents/:type/:id" element={<Members />} />
         </Routes>
       ) : (
         <Routes>
