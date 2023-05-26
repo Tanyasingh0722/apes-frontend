@@ -43,6 +43,13 @@ function App() {
         </Routes>
       ) : (
         <Routes>
+          <Route path="/events" element={<Events />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/agenda" element={<Events isAgenda={true} />} />
+
+          <Route path="/contactus" element={<Contact />} />
+          <Route path="/changepassword" element={<Changepassword />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/resetpassword" element={<Resetpassword />} />
