@@ -99,7 +99,7 @@ export default function Events({ isAgenda = false }) {
             </p>
             <p className="eventdis">
               Participating in these extraordinary events is easier than ever!
-              Simply dive into our captivating event listings, each brimming
+              Simply dive intoo our captivating event listings, each brimming
               with thrilling details that will make your heart race. Choose the
               event that resonates with your passions and aspirations, and with
               a simple click, you'll unlock a world of adventure.
