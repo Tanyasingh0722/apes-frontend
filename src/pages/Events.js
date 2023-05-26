@@ -97,19 +97,7 @@ export default function Events({ isAgenda = false }) {
               a whirlwind of thrilling experiences that will leave you
               breathless and eager for more.
             </p>
-            <p className="eventdis">
-              Participating in these extraordinary events is easier than ever!
-              Simply dive intoo our captivating event listings, each brimming
-              with thrilling details that will make your heart race. Choose the
-              event that resonates with your passions and aspirations, and with
-              a simple click, you'll unlock a world of adventure.
-            </p>
-            <p className="eventdis">
-              So, are you ready to step into the spotlight, fuel your passions,
-              and embrace a world of thrilling events? Gear up, buckle in, and
-              prepare to make every moment count. The stage is set, and the
-              spotlight is on you. Let the adventure begin!
-            </p>
+            
           </>
         ) : (
           <>
@@ -136,8 +124,7 @@ export default function Events({ isAgenda = false }) {
         <div className="eventbox">
           <VStack
             pb={20}
-            border="1px solid"
-            borderColor="gray.400"
+            
             rounded="md"
             overflow="hidden"
             spacing={0}
@@ -217,8 +204,7 @@ export default function Events({ isAgenda = false }) {
         <div className="eventbox">
           <VStack
             pb={20}
-            border="1px solid"
-            borderColor="red.400"
+            
             rounded="md"
             overflow="hidden"
             spacing={0}
@@ -262,7 +248,7 @@ export default function Events({ isAgenda = false }) {
                     alignItems="center"
                   ></Stack>
                 </Grid>
-                {articles.length - 1 !== index && <Divider m={0} />}
+                {articles.length - 1 !== index}
               </Fragment>
             ))}
           </VStack>
