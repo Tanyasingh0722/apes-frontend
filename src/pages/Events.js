@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./Event.css";
 import { Fragment } from "react";
-import book from "../assets/img/casual-life-3d-close-up-of-blue-book.png";
+// import book from "../assets/img/casual-life-3d-close-up-of-blue-book.png";
 
 import {
   Container,
@@ -89,9 +89,9 @@ export default function Events({ isAgenda = false }) {
           </chakra.h3>
         </Flex>
         <div>
-          <div className="imageevent">
+          {/* <div className="imageevent">
             <img src={img1} alt="img1" className="i1 layer" data-speed={2} />
-          </div>
+          </div> */}
           {!isAgenda ? (
             <>
               <p className="eventdis">Welcome to the Event Section!</p>
