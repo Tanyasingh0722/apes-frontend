@@ -2,7 +2,7 @@ import { Box, Heading, Text, Button, useToast } from "@chakra-ui/react";
 import { distributeBalanceAPI } from "./Service";
 import { useToaster } from "react-hot-toast";
 
-export default function NotFound() {
+export default function DistributeBalance() {
   const toast = useToast();
   const distributeBalance = async () => {
     distributeBalanceAPI();
