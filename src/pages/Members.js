@@ -26,7 +26,7 @@ export default function Members() {
     const data = await getVotersAPI({
       agendaID: id,
     });
-    setMember(data?.eventDetail?.voters);
+    setMember(data);
   };
 
   React.useEffect(() => {
@@ -40,9 +40,13 @@ export default function Members() {
   return (
     <TableContainer p={10}>
       <Table variant="striped" colorScheme="teal">
-        <TableCaption>
-          Participated in {member?.eventDetail?.Hackathonname}{" "}
-        </TableCaption>
+        {type == "event" ? (
+          <TableCaption>
+            Participated in {member?.eventDetail?.Hackathonname}{" "}
+          </TableCaption>
+        ) : (
+          <TableCaption>Voted in {member?.eventDetail?.agenda} </TableCaption>
+        )}
         <Thead>
           <Tr>
             <Th>Name</Th>
@@ -59,7 +63,7 @@ export default function Members() {
                   <Td>{item.email}</Td>
                 </Tr>
               ))
-            : member?.map((item) => (
+            : member?.users?.map((item) => (
                 <Tr>
                   <Td>{item.name}</Td>
                   <Td>{item.rollno} </Td>
