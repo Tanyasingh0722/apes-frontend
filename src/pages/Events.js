@@ -25,6 +25,9 @@ import { getAllAgendaAPI, getallEventsAPI } from "./Service";
 import { useNavigate } from "react-router-dom";
 import eimg1 from "../assets/img/Saly-38.png";
 import eimg2 from "../assets/img/Saly-39.png";
+import aimg1 from "../assets/img/Saly-6.png";
+import aimg2 from "../assets/img/Saly-25.png";
+
 const articles: ArticleAttributes[] = [
   {
     title: "Hack1",
@@ -85,52 +88,34 @@ export default function Events({ isAgenda = false }) {
 
   return (
     <div className="eventcontainer">
-      <Container className="container" maxW="5xl" mb={30} overflow={"hidden"}>
-        <div className="eventimqb">
-          <img src={eimg1} alt="eimg1" className="e1 layere" data-speed={2} />
-          <img src={eimg2} alt="eimg1" className="e2 layere" data-speed={-2} />
-        </div>
-        <Flex justify="left" mb={3}>
-          <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
-            {!isAgenda ? "Event" : "Agendas"}
-          </chakra.h3>
-        </Flex>
-        <div>
-          {!isAgenda ? (
-            <>
-              <p className="eventdis">Welcome to the Event Section!</p>
-              <p className="eventdis">
-                Step into a world of endless excitement and incredible
-                opportunities with our exclusive Event Section! Brace yourself
-                for a whirlwind of thrilling experiences that will leave you
-                breathless and eager for more.
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="eventdis">Welcome to the Agendas Section!</p>
-              <p className="eventdis">
-                Here, we believe in the power of collective decision-making and
-                giving every member a voice. Share your agenda, gather insights,
-                and make informed decisions through a unique voting system that
-                combines the strength of your project's coin.
-              </p>
-              <p className="eventdis">
-                Join us on this remarkable journey of democratic
-                decision-making, where your opinions shape the destiny of our
-                project. Together, let's create a legacy that will inspire
-                generations to come.
-              </p>
-            </>
-          )}
-        </div>
-
-        {/* AGENDA PAGE  */}
-
-        {isAgenda ? (
-          // HACKATHON PAGE
+      {isAgenda ? (
+        // AGENDA PAGE
+        <Container className="container" maxW="5xl" mb={30} overflow="hidden">
+          <div className="agendaimqb">
+            <img src={aimg2} alt="eimg1" className="a1" />
+            <img src={aimg1} alt="eimg1" className="a2" />
+          </div>
+          <Flex justify="left" mb={3}>
+            <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
+              Agendas
+            </chakra.h3>
+          </Flex>
+          <div>
+            <p className="eventdis">Welcome to the Agendas Section!</p>
+            <p className="eventdis">
+              Here, we believe in the power of collective decision-making and
+              giving every member a voice. Share your agenda, gather insights,
+              and make informed decisions through a unique voting system that
+              combines the strength of your project's coin.
+            </p>
+            <p className="eventdis">
+              Join us on this remarkable journey of democratic decision-making,
+              where your opinions shape the destiny of our project. Together,
+              let's create a legacy that will inspire generations to come.
+            </p>
+          </div>
           <div className="eventbox">
-            <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
+            <VStack rounded="md" overflow="hidden" spacing={0}>
               {events.map((event, index) => (
                 <Fragment key={index}>
                   <Grid
@@ -153,58 +138,43 @@ export default function Events({ isAgenda = false }) {
                       >
                         {event.agenda}
                       </chakra.h3>
-                      <chakra.p
-                        fontWeight="medium"
-                        fontSize="sm"
-                        color={"gray.600"}
-                      >
-                        College ID: {event.collegeID}
-                      </chakra.p>
-                      <chakra.p
-                        fontWeight="medium"
-                        fontSize="sm"
-                        color={"gray.600"}
-                      >
-                        Created On: {event.createdAt}
-                      </chakra.p>
-                      <chakra.p
-                        fontWeight="medium"
-                        fontSize="sm"
-                        color={"gray.600"}
-                      >
-                        Branch Specific:{" "}
-                        {event.isRestrictedToBranch
-                          ? ArticleSettingLink({ label: "Yes" })
-                          : ArticleSettingLink({ label: "No" })}
-                      </chakra.p>
-                      <chakra.p
-                        fontWeight="medium"
-                        fontSize="sm"
-                        color={"gray.600"}
-                      >
-                        Class Specific:{" "}
-                        {event.isRestrictedToClass
-                          ? ArticleSettingLink({ label: "Yes" })
-                          : ArticleSettingLink({ label: "No" })}
-                      </chakra.p>
+                      {/* Additional chakra.p elements */}
                     </Box>
-
-                    <Stack
-                      spacing={2}
-                      direction="row"
-                      fontSize={{ base: "sm", sm: "md" }}
-                      justifySelf="flex-end"
-                      alignItems="center"
-                    ></Stack>
+                    {/* Additional Stack elements */}
                   </Grid>
-                  {articles.length - 1 !== index && <Divider m={0} />}
                 </Fragment>
               ))}
             </VStack>
           </div>
-        ) : (
+        </Container>
+      ) : (
+        // EVENT PAGE
+        <Container className="container" maxW="5xl" mb={30} overflow="hidden">
+          <div className="eventimqb">
+            <img src={eimg1} alt="eimg1" className="e1 layere" data-speed={2} />
+            <img
+              src={eimg2}
+              alt="eimg1"
+              className="e2 layere"
+              data-speed={-2}
+            />
+          </div>
+          <Flex justify="left" mb={3}>
+            <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
+              Event
+            </chakra.h3>
+          </Flex>
+          <div>
+            <p className="eventdis">Welcome to the Event Section!</p>
+            <p className="eventdis">
+              Step into a world of endless excitement and incredible
+              opportunities with our exclusive Event Section! Brace yourself for
+              a whirlwind of thrilling experiences that will leave you
+              breathless and eager for more.
+            </p>
+          </div>
           <div className="eventbox">
-            <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
+            <VStack rounded="md" overflow="hidden" spacing={0}>
               {events.map((event, index) => (
                 <Fragment key={index}>
                   <Grid
@@ -227,30 +197,16 @@ export default function Events({ isAgenda = false }) {
                       >
                         {event.Hackathonname}
                       </chakra.h3>
-                      <chakra.p
-                        fontWeight="medium"
-                        fontSize="sm"
-                        color={"gray.600"}
-                      >
-                        Created On: {event.createdAt}
-                      </chakra.p>
+                      {/* Additional chakra.p elements */}
                     </Box>
-
-                    <Stack
-                      spacing={2}
-                      direction="row"
-                      fontSize={{ base: "sm", sm: "md" }}
-                      justifySelf="flex-end"
-                      alignItems="center"
-                    ></Stack>
+                    {/* Additional Stack elements */}
                   </Grid>
-                  {articles.length - 1 !== index}
                 </Fragment>
               ))}
             </VStack>
           </div>
-        )}
-      </Container>
+        </Container>
+      )}
     </div>
   );
 }
