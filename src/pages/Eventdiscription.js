@@ -53,7 +53,7 @@ export default function Eventdiscription() {
           <Image
             rounded={"md"}
             alt={"product image"}
-            src={require("../assets/img/hackathonbg.jpg")}
+            src={require("../assets/img/trophy.png")}
             fit={"cover"}
             align={"center"}
             w={"100%"}

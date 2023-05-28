@@ -25,7 +25,8 @@ import { getAllAgendaAPI, getallEventsAPI } from "./Service";
 import { useNavigate } from "react-router-dom";
 import eimg1 from "../assets/img/Saly-38.png";
 import eimg2 from "../assets/img/Saly-39.png";
-
+import aimg1 from "../assets/img/Saly-6.png";
+import aimg2 from "../assets/img/Saly-25.png";
 
 const articles: ArticleAttributes[] = [
   {
@@ -90,7 +91,10 @@ export default function Events({ isAgenda = false }) {
       {isAgenda ? (
         // AGENDA PAGE
         <Container className="container" maxW="5xl" mb={30} overflow="hidden">
-          
+          <div className="agendaimqb">
+            <img src={aimg2} alt="eimg1" className="a1" />
+            <img src={aimg1} alt="eimg1" className="a2" />
+          </div>
           <Flex justify="left" mb={3}>
             <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
               Agendas
@@ -99,18 +103,19 @@ export default function Events({ isAgenda = false }) {
           <div>
             <p className="eventdis">Welcome to the Agendas Section!</p>
             <p className="eventdis">
-              Here, we believe in the power of collective decision-making and giving every member a voice. Share your agenda, gather insights,
-                and make informed decisions through a unique voting system that
-                combines the strength of your project's coin.
+              Here, we believe in the power of collective decision-making and
+              giving every member a voice. Share your agenda, gather insights,
+              and make informed decisions through a unique voting system that
+              combines the strength of your project's coin.
             </p>
             <p className="eventdis">
-            Join us on this remarkable journey of democratic decision-making, where your opinions shape the destiny of our
-                project. Together, let's create a legacy that will inspire
-                generations to come.
+              Join us on this remarkable journey of democratic decision-making,
+              where your opinions shape the destiny of our project. Together,
+              let's create a legacy that will inspire generations to come.
             </p>
           </div>
           <div className="eventbox">
-            <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
+            <VStack rounded="md" overflow="hidden" spacing={0}>
               {events.map((event, index) => (
                 <Fragment key={index}>
                   <Grid
@@ -137,7 +142,6 @@ export default function Events({ isAgenda = false }) {
                     </Box>
                     {/* Additional Stack elements */}
                   </Grid>
-                  
                 </Fragment>
               ))}
             </VStack>
@@ -148,7 +152,12 @@ export default function Events({ isAgenda = false }) {
         <Container className="container" maxW="5xl" mb={30} overflow="hidden">
           <div className="eventimqb">
             <img src={eimg1} alt="eimg1" className="e1 layere" data-speed={2} />
-            <img src={eimg2} alt="eimg1" className="e2 layere" data-speed={-2} />
+            <img
+              src={eimg2}
+              alt="eimg1"
+              className="e2 layere"
+              data-speed={-2}
+            />
           </div>
           <Flex justify="left" mb={3}>
             <chakra.h3 fontSize="2xl" fontWeight="bold" textAlign="center">
@@ -158,13 +167,14 @@ export default function Events({ isAgenda = false }) {
           <div>
             <p className="eventdis">Welcome to the Event Section!</p>
             <p className="eventdis">
-              Step into a world of endless excitement and incredible opportunities with our exclusive Event Section! Brace yourself
-                for a whirlwind of thrilling experiences that will leave you
-                breathless and eager for more.
+              Step into a world of endless excitement and incredible
+              opportunities with our exclusive Event Section! Brace yourself for
+              a whirlwind of thrilling experiences that will leave you
+              breathless and eager for more.
             </p>
           </div>
           <div className="eventbox">
-            <VStack pb={20} rounded="md" overflow="hidden" spacing={0}>
+            <VStack rounded="md" overflow="hidden" spacing={0}>
               {events.map((event, index) => (
                 <Fragment key={index}>
                   <Grid
@@ -191,7 +201,6 @@ export default function Events({ isAgenda = false }) {
                     </Box>
                     {/* Additional Stack elements */}
                   </Grid>
-                  
                 </Fragment>
               ))}
             </VStack>
@@ -200,5 +209,4 @@ export default function Events({ isAgenda = false }) {
       )}
     </div>
   );
-  ;
 }

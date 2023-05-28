@@ -97,4 +97,23 @@
 .eventdis {
   position: relative;
   z-index: 4;
+  color: black;
+}
+.agendaimqb {
+  position: absolute;
+}
+.a1 {
+  position: fixed;
+  height: 300px;
+  width: 500px;
+  z-index: 3;
+  right: 50px;
+  bottom: 0;
+}
+.a2 {
+  position: fixed;
+  height: 700px;
+  width: 700px;
+  z-index: 2;
+  left: 0;
 }
