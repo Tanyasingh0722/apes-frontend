@@ -64,9 +64,9 @@ export default function Addagenda() {
 
             <Stack direction={{ base: "column", md: "row" }}>
               <Box
-                bg={useColorModeValue("white", "gray.700")}
+                bg={useColorModeValue("blue.100", "gray.700")}
                 borderRadius="lg"
-                p={5}
+                p={65}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
               >
@@ -87,7 +87,7 @@ export default function Addagenda() {
                     <FormLabel> Branch</FormLabel>
 
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" Amount" />
+                      <Input type="text" name="name" placeholder=" Branch" />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
@@ -121,7 +121,7 @@ export default function Addagenda() {
                     }}
                     isFullWidth
                   >
-                    Add Hackathon
+                    Add Agenda
                   </Button>
                 </VStack>
               </Box>

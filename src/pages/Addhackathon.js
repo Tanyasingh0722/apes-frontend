@@ -64,9 +64,9 @@ export default function Addhackathon() {
 
             <Stack direction={{ base: "column", md: "row" }}>
               <Box
-                bg={useColorModeValue("white", "gray.700")}
+                bg={useColorModeValue("grey.600", "gray.700")}
                 borderRadius="lg"
-                p={5}
+                p={65}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
               >

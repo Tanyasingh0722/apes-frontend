@@ -12,11 +12,13 @@ import Addhackathon from "./pages/Addhackathon";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Contact from "./pages/Contact";
-
 import Changepassword from "./pages/ChangePassword";
 import Resetpassword from "./pages/ResetPassword";
 import Members from "./pages/Members";
 import { Toaster } from "react-hot-toast";
+import DistributeBalance from "./pages/DistributeBalance";
+import Addagenda from "./pages/Addagenda";
+import Adduser from "./pages/Adduser";
 
 function App() {
   return (

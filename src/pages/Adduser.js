@@ -64,9 +64,9 @@ export default function Adduser() {
 
             <Stack direction={{ base: "column", md: "row" }}>
               <Box
-                bg={useColorModeValue("white", "gray.700")}
+                bg={useColorModeValue("orange.300", "gray.700")}
                 borderRadius="lg"
-                p={5}
+                p={95}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
               >
