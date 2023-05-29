@@ -26,26 +26,30 @@ import { useNavigate } from "react-router-dom";
 import { BsCoin } from "react-icons/bs";
 import { FaCoins } from "react-icons/fa";
 import { getUserByIdAPI } from "../pages/Service";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/img/logo.png";
 import profile from "../assets/img/profile.png";
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
+  const [balance, setBalance] = useState(0);
+
   const navigate = useNavigate();
   const fetchUser = async () => {
     const data = await getUserByIdAPI(
       JSON.parse(localStorage.getItem("userData"))?.user?.rollno
     );
     if (data) {
-      localStorage.setItem("userData", JSON.stringify(data));
+      //localStorage.setItem("userData", JSON.stringify(data));
+      setBalance(data.balance);
+      localStorage.setItem("isAdmin", data.isAdmin);
     }
   };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       let interval = setInterval(() => {
-        // fetchUser();
-      }, 10000);
+        fetchUser();
+      }, 2000);
       return () => clearInterval(interval);
     }
   }, []);
@@ -113,7 +117,7 @@ export default function Header() {
             <Flex alignItems={"center"} justifyContent={"center"}>
               <FaCoins />
               <Text fontSize={"md"} m={2} fontWeight={600}>
-                {JSON.parse(localStorage.getItem("userData"))?.user?.balance}
+                {balance}
               </Text>
 
               <Avatar onClick={() => navigate("/myprofile")}></Avatar>
@@ -137,44 +141,49 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                onClick={() => navigate(navItem.href)}
-                fontSize={"sm"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
+      {JSON.parse(localStorage.getItem("isAdmin")) &&
+      localStorage.getItem("token")
+        ? ADMIN_NAV_ITEMS.map((navItem) => (
+            <MobileNavItem key={navItem.label} {...navItem} />
+          ))
+        : NAV_ITEMS.map((navItem) => (
+            <Box key={navItem.label}>
+              <Popover trigger={"hover"} placement={"bottom-start"}>
+                <PopoverTrigger>
+                  <Link
+                    p={2}
+                    onClick={() => navigate(navItem.href)}
+                    fontSize={"sm"}
+                    fontWeight={500}
+                    color={linkColor}
+                    _hover={{
+                      textDecoration: "none",
+                      color: linkHoverColor,
+                    }}
+                  >
+                    {navItem.label}
+                  </Link>
+                </PopoverTrigger>
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={"xl"}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={"xl"}
-                minW={"sm"}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
+                {navItem.children && (
+                  <PopoverContent
+                    border={0}
+                    boxShadow={"xl"}
+                    bg={popoverContentBgColor}
+                    p={4}
+                    rounded={"xl"}
+                    minW={"sm"}
+                  >
+                    <Stack>
+                      {navItem.children.map((child) => (
+                        <DesktopSubNav key={child.label} {...child} />
+                      ))}
+                    </Stack>
+                  </PopoverContent>
+                )}
+              </Popover>
+            </Box>
+          ))}
     </Stack>
   );
 };
@@ -223,9 +232,13 @@ const MobileNav = () => {
       p={4}
       display={{ md: "none" }}
     >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
+      {JSON.parse(localStorage.getItem("isAdmin"))
+        ? ADMIN_NAV_ITEMS.map((navItem) => (
+            <MobileNavItem key={navItem.label} {...navItem} />
+          ))
+        : NAV_ITEMS.map((navItem) => (
+            <MobileNavItem key={navItem.label} {...navItem} />
+          ))}
     </Stack>
   );
 };
@@ -307,5 +320,28 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Contact Us",
     href: "/contactus",
+  },
+];
+const ADMIN_NAV_ITEMS: Array<NavItem> = [
+  {
+    label: "Home",
+    href: "/home",
+  },
+  {
+    label: "Add Events",
+    href: "/addhackathon",
+  },
+  {
+    label: "Add Agenda",
+    href: "/addagenda",
+  },
+
+  {
+    label: "Add User",
+    href: "/adduser",
+  },
+  {
+    label: "Distribute Balance",
+    href: "/distributebalance",
   },
 ];

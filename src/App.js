@@ -26,7 +26,20 @@ function App() {
       <Header />
       <Toaster />
 
-      {localStorage.getItem("token") ? (
+      {localStorage.getItem("token") &&
+      localStorage.getItem("isAdmin") &&
+      JSON.parse(localStorage.getItem("isAdmin")) ? (
+        <Routes>
+          <Route path="/" element={<DistributeBalance />} />
+          <Route path="/home" element={<DistributeBalance />} />
+          <Route path="/addagenda" element={<Addagenda />} />
+          <Route path="/adduser" element={<Adduser />} />
+          <Route path="/distributebalance" element={<DistributeBalance />} />
+          <Route path="/addhackathon" element={<Addhackathon />} />
+          <Route path="/myprofile" element={<Myprofile />} />
+        </Routes>
+      ) : localStorage.getItem("token") &&
+        !JSON.parse(localStorage.getItem("isAdmin")) ? (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Events />} />

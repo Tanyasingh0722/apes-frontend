@@ -15,11 +15,13 @@ import {
   Tooltip,
   useClipboard,
   useColorModeValue,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import { createAgendaAPI } from "./Service";
 
 const confetti = {
   light: {
@@ -39,6 +41,28 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 export default function Addagenda() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
 
+  const [agenda, setAgenda] = useState(" ");
+  const [branch, setBranch] = useState(" ");
+  const [date, setDate] = useState(" ");
+  const [description, setDescription] = useState(" ");
+  const toast = useToast();
+  const addagenda = async () => {
+    const data = await createAgendaAPI({
+      agenda,
+      branch,
+      date,
+      description,
+    });
+    if (data) {
+      toast({
+        title: "Agenda Added",
+        description: "Agenda Added Successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
   return (
     <Flex
       bg={useColorModeValue("gray.100", "gray.900")}
@@ -79,6 +103,7 @@ export default function Addagenda() {
                         type="text"
                         name="name"
                         placeholder="Agenda Tittle"
+                        onChange={(e) => setAgenda(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -87,7 +112,12 @@ export default function Addagenda() {
                     <FormLabel> Branch</FormLabel>
 
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" Branch" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" Branch"
+                        onChange={(e) => setBranch(e.target.value)}
+                      />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
@@ -97,6 +127,7 @@ export default function Addagenda() {
                         type="date"
                         name="activeDate"
                         placeholder="Active Date"
+                        onChange={(e) => setDate(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -106,9 +137,10 @@ export default function Addagenda() {
 
                     <Textarea
                       name="message"
-                      placeholder="Your Message"
+                      placeholder="Discription"
                       rows={6}
                       resize="none"
+                      onChange={(e) => setDescription(e.target.value)}
                     />
                   </FormControl>
 
@@ -120,6 +152,7 @@ export default function Addagenda() {
                       bg: "blue.500",
                     }}
                     isFullWidth
+                    onClick={addagenda}
                   >
                     Add Agenda
                   </Button>

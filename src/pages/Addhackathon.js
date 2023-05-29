@@ -15,11 +15,13 @@ import {
   Tooltip,
   useClipboard,
   useColorModeValue,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import { addEventAPI } from "./Service";
 
 const confetti = {
   light: {
@@ -38,6 +40,37 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 export default function Addhackathon() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const [Hackathonname, setHackathonname] = useState("");
+  const [entryfee, setentryfee] = useState("");
+  const [lastdate, setlastdate] = useState("");
+  const [description, setdescription] = useState("");
+
+  const toast = useToast();
+  const addhackathon = async () => {
+    const data = await addEventAPI({
+      Hackathonname,
+      entryfee,
+      lastdate,
+      description,
+    });
+    if (data) {
+      toast({
+        title: "Hackathon Added",
+        description: "Hackathon Added Successfully",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "Hackathon Not Added",
+        description: "Hackathon Not Added Successfully",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Flex
@@ -75,7 +108,13 @@ export default function Addhackathon() {
                     <FormLabel>Hackathon Tittle</FormLabel>
 
                     <InputGroup>
-                      <Input type="text" name="name" placeholder="Your Name" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder="Hackathon Name"
+                        onChange={(e) => setHackathonname(e.target.value)}
+                      />
+                      />
                     </InputGroup>
                   </FormControl>
 
@@ -83,7 +122,13 @@ export default function Addhackathon() {
                     <FormLabel>Participation Fee</FormLabel>
 
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" Amount" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" Amount"
+                        onChange={(e) => setentryfee(e.target.value)}
+                      />
+                      />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
@@ -93,6 +138,7 @@ export default function Addhackathon() {
                         type="date"
                         name="activeDate"
                         placeholder="Active Date"
+                        onChange={(e) => setlastdate(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -105,6 +151,7 @@ export default function Addhackathon() {
                       placeholder="Your Message"
                       rows={6}
                       resize="none"
+                      onChange={(e) => setdescription(e.target.value)}
                     />
                   </FormControl>
 
@@ -116,6 +163,7 @@ export default function Addhackathon() {
                       bg: "blue.500",
                     }}
                     isFullWidth
+                    onClick={addhackathon}
                   >
                     Add Hackathon
                   </Button>

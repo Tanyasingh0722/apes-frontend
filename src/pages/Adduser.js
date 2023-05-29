@@ -15,11 +15,13 @@ import {
   Tooltip,
   useClipboard,
   useColorModeValue,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import { addUserAPI } from "./Service";
 
 const confetti = {
   light: {
@@ -38,6 +40,42 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 export default function Adduser() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const toast = useToast();
+  const [Name, setName] = useState("");
+  const [rollno, setRollno] = useState("");
+  const [phonenumber, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [balance, setBalance] = useState("");
+  const [section, setSection] = useState("");
+  const [branch, setBranch] = useState("");
+  const [attendance, setAttendance] = useState("");
+  const [classperformance, setClassperformance] = useState("");
+  const [marks, setMarks] = useState("");
+  const adduser = async () => {
+    const data = await addUserAPI({
+      name: Name,
+      rollno: rollno,
+      phonenumber: phonenumber,
+      email: email,
+      password: password,
+      balance: balance,
+      section: section,
+      branch: branch,
+      attendance: attendance,
+      classperformance: classperformance,
+      marks: marks,
+    });
+    if (data) {
+      toast({
+        title: "User Added",
+        description: "User Added Successfully",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Flex
@@ -79,6 +117,7 @@ export default function Adduser() {
                         type="text"
                         name="name"
                         placeholder="Students Name"
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -91,6 +130,7 @@ export default function Adduser() {
                         type="text"
                         name="name"
                         placeholder=" Roll Number"
+                        onChange={(e) => setRollno(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -101,19 +141,30 @@ export default function Adduser() {
                         type="text"
                         name="name"
                         placeholder=" Phone Number"
+                        onChange={(e) => setPhone(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
                     <FormLabel>Section</FormLabel>
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" Section" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" Section"
+                        onChange={(e) => setSection(e.target.value)}
+                      />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
                     <FormLabel>Branch</FormLabel>
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" Branch" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" Branch"
+                        onChange={(e) => setBranch(e.target.value)}
+                      />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
@@ -123,6 +174,7 @@ export default function Adduser() {
                         type="email"
                         name="name"
                         placeholder=" xyz@abc.com"
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -133,13 +185,19 @@ export default function Adduser() {
                         type="text"
                         name="name"
                         placeholder=" Attendance"
+                        onChange={(e) => setAttendance(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
                     <FormLabel>Marks</FormLabel>
                     <InputGroup>
-                      <Input type="text" name="name" placeholder=" marks" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" marks"
+                        onChange={(e) => setMarks(e.target.value)}
+                      />
                     </InputGroup>
                   </FormControl>
                   <FormControl isRequired>
@@ -149,6 +207,18 @@ export default function Adduser() {
                         type="text"
                         name="name"
                         placeholder=" Classperformance"
+                        onChange={(e) => setClassperformance(e.target.value)}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <FormControl isRequired>
+                    <FormLabel>Password</FormLabel>
+                    <InputGroup>
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder=" Password"
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </InputGroup>
                   </FormControl>
@@ -161,6 +231,7 @@ export default function Adduser() {
                       bg: "blue.500",
                     }}
                     isFullWidth
+                    onClick={adduser}
                   >
                     Add User
                   </Button>

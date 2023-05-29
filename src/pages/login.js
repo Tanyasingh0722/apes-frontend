@@ -28,6 +28,7 @@ export default function Login() {
     }
     localStorage.setItem("token", data.token);
     localStorage.setItem("userData", JSON.stringify(data));
+    localStorage.setItem("isAdmin", data.isAdmin ? data.isAdmin : false);
     window.location.href = "/";
   };
 
