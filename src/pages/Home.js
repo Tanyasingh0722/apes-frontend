@@ -229,7 +229,7 @@ const Home = () => {
         {/* home page boxes */}
 
         <Flex w="100%" justifyContent={"space-between"}>
-          {events?.slice(3)?.map((data, index) => (
+          {events?.slice(0, 3)?.map((data, index) => (
             <motion.div
               style={{
                 width: "30%",
